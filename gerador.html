@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerador de Senhas | Lucas Santos</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="shortcut icon" href="assets/imagens/logo_pessoal.png" type="image/png" />
+</head>
+
+<body>
+  <header class="container-cabecalho">
+    <a href="index.html">
+      <img src="assets/imagens/logo_pessoal.png" alt="Logo pessoal" />
+    </a>
+    <h1>Gerador de Senhas Aleatórias</h1>
+    <p>Gere senhas seguras com um clique!</p>
+  </header>
+
+  <nav class="container-navegacao">
+    <a href="index.html">Sobre mim</a>
+    <a href="projetos.html">Projetos</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+
+  <main class="container-quem-sou">
+    <section class="sobre">
+      <h2>Gerar uma nova senha</h2>
+      <label for="tamanho">Tamanho da senha:</label><br>
+      <input type="number" id="tamanho" value="12" min="4" max="64" /><br><br>
+      <button onclick="mostrarSenha()">Gerar Senha</button><br><br>
+      <p><strong>Senha gerada:</strong></p>
+      <p id="senha-gerada" style="word-break: break-all; font-weight: bold;"></p>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Lucas Santos. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    function gerarSenha(length = 12) {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}<>?,.';
+      let senha = '';
+      for (let i = 0; i < length; i++) {
+        const index = Math.floor(Math.random() * chars.length);
+        senha += chars[index];
+      }
+      return senha;
+    }
+
+    function mostrarSenha() {
+      const tamanho = parseInt(document.getElementById('tamanho').value);
+      const senha = gerarSenha(tamanho);
+      document.getElementById('senha-gerada').innerText = senha;
+    }
+  </script>
+</body>
+
+</html>
