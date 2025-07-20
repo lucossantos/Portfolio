@@ -1,0 +1,121 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+header.container-cabecalho {
+  background-color: #1e1e2f;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+header.container-cabecalho img {
+  max-width: 80px;
+  margin-bottom: 0.5rem;
+}
+
+.container-cabecalho h1 {
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+}
+
+.container-cabecalho p {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+nav.container-navegacao {
+  background-color: #29293d;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+nav.container-navegacao a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav.container-navegacao a:hover {
+  color: #ffc107;
+}
+
+.container-quem-sou {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  background-color: white;
+}
+
+.sobre {
+  text-align: center;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fafafa;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.icone {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+}
+
+.sobre-texto {
+  font-size: 1rem;
+  color: #444;
+}
+
+.servico-texto-realce {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.container-projetos-contato {
+  background-color: #e0e0e0;
+  padding: 2rem;
+  text-align: center;
+}
+
+.container-projetos-contato h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.botoes-projetos-contato a {
+  display: inline-block;
+  margin: 0 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #1e1e2f;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.botoes-projetos-contato a:hover {
+  background-color: #343456;
+}
+
+footer {
+  background-color: #1e1e2f;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
