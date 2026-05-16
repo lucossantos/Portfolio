@@ -30,11 +30,35 @@
   <main class="container-quem-sou">
     <section class="sobre">
       <h2>Gerar uma nova senha</h2>
+
       <label for="tamanho">Tamanho da senha:</label><br>
       <input type="number" id="tamanho" value="12" min="4" max="64" /><br><br>
-      <button onclick="mostrarSenha()">Gerar Senha</button><br><br>
+
+      <fieldset style="border: none; padding: 0; margin-bottom: 20px;">
+        <legend><strong>Escolha os tipos de caracteres:</strong></legend><br>
+
+        <label>
+          <input type="checkbox" id="usar-letras" checked />
+          Letras
+        </label><br>
+
+        <label>
+          <input type="checkbox" id="usar-numeros" checked />
+          Números
+        </label><br>
+
+        <label>
+          <input type="checkbox" id="usar-simbolos" checked />
+          Símbolos
+        </label>
+      </fieldset>
+
+      <button type="button" onclick="mostrarSenha()">Gerar Senha</button>
+      <button type="button" onclick="copiarSenha()">Copiar Senha</button><br><br>
+
       <p><strong>Senha gerada:</strong></p>
       <p id="senha-gerada" style="word-break: break-all; font-weight: bold;"></p>
+      <p id="mensagem" aria-live="polite" style="font-weight: bold;"></p>
     </section>
   </main>
 
@@ -47,20 +71,88 @@
   </script>
 
   <script>
+    function obterIndiceSeguro(tamanhoMaximo) {
+      const array = new Uint32Array(1);
+      window.crypto.getRandomValues(array);
+      return array[0] % tamanhoMaximo;
+    }
+
     function gerarSenha(length = 12) {
-      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}<>?,.';
-      let senha = '';
-      for (let i = 0; i < length; i++) {
-        const index = Math.floor(Math.random() * chars.length);
-        senha += chars[index];
+      const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+      const numeros = "0123456789";
+      const simbolos = "!@#$%^&*()_+[]{}<>?,.";
+
+      const usarLetras = document.getElementById("usar-letras").checked;
+      const usarNumeros = document.getElementById("usar-numeros").checked;
+      const usarSimbolos = document.getElementById("usar-simbolos").checked;
+
+      let caracteres = "";
+
+      if (usarLetras) {
+        caracteres += letras;
       }
+
+      if (usarNumeros) {
+        caracteres += numeros;
+      }
+
+      if (usarSimbolos) {
+        caracteres += simbolos;
+      }
+
+      if (caracteres.length === 0) {
+        return "";
+      }
+
+      let senha = "";
+
+      for (let i = 0; i < length; i++) {
+        const index = obterIndiceSeguro(caracteres.length);
+        senha += caracteres[index];
+      }
+
       return senha;
     }
 
     function mostrarSenha() {
-      const tamanho = parseInt(document.getElementById('tamanho').value);
+      const tamanho = parseInt(document.getElementById("tamanho").value);
+      const senhaGerada = document.getElementById("senha-gerada");
+      const mensagem = document.getElementById("mensagem");
+
+      mensagem.textContent = "";
+
+      if (isNaN(tamanho) || tamanho < 4 || tamanho > 64) {
+        senhaGerada.textContent = "";
+        mensagem.textContent = "Escolha um tamanho entre 4 e 64 caracteres.";
+        return;
+      }
+
       const senha = gerarSenha(tamanho);
-      document.getElementById('senha-gerada').innerText = senha;
+
+      if (!senha) {
+        senhaGerada.textContent = "";
+        mensagem.textContent = "Selecione pelo menos uma opção: letras, números ou símbolos.";
+        return;
+      }
+
+      senhaGerada.textContent = senha;
+    }
+
+    async function copiarSenha() {
+      const senha = document.getElementById("senha-gerada").textContent;
+      const mensagem = document.getElementById("mensagem");
+
+      if (!senha) {
+        mensagem.textContent = "Gere uma senha antes de copiar.";
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(senha);
+        mensagem.textContent = "Senha copiada com sucesso!";
+      } catch (error) {
+        mensagem.textContent = "Não foi possível copiar a senha automaticamente.";
+      }
     }
   </script>
 </body>
