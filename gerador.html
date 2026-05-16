@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8" />
@@ -37,8 +37,12 @@
   </main>
 
   <footer>
-    © 2025 Lucas Santos. Todos os direitos reservados.
+    <p>© <span id="ano"></span> Lucas Santos. Todos os direitos reservados.</p>
   </footer>
+
+  <script>
+    document.getElementById("ano").textContent = new Date().getFullYear();
+  </script>
 
   <script>
     function gerarSenha(length = 12) {
