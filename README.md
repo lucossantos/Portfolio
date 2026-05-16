@@ -1,4 +1,4 @@
-# 👨‍💻 Lucas Santos — Portfólio Pessoal
+# Lucas Santos — Portfólio Pessoal
 
 Bem-vindo ao meu portfólio!  
 Este projeto foi desenvolvido para apresentar meus trabalhos, projetos pessoais e habilidades em desenvolvimento web e programação.
@@ -11,7 +11,7 @@ https://github.com/lucossantos/Portfolio
 
 ---
 
-## 🚀 Sobre o projeto
+## Sobre o projeto
 
 O objetivo deste portfólio é reunir projetos e experiências em um único lugar, utilizando uma interface moderna, responsiva e simples de navegar.
 
