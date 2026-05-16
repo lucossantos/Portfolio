@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8" />
@@ -16,7 +16,7 @@
       <img src="assets/imagens/logo_pessoal.png" alt="Logo pessoal" title="Logo pessoal" />
     </a>
     <h1>Lucas Santos</h1>
-    <p>Desenvolvedor | Designer | Criador de Conteúdo</p>
+    <p>Desenvolvedor em formação | Análise de Dados | Python, SQL e Web</p>
   </header>
 
   <nav class="container-navegacao">
@@ -29,8 +29,8 @@
     <article class="sobre">
       <img src="assets/imagens/icon_user.png" class="icone" alt="Sobre mim" />
       <p class="sobre-texto">
-        Olá! Sou <span class="servico-texto-realce">Lucas Santos</span>, um profissional apaixonado por tecnologia,
-        design e inovação. Crio soluções criativas e funcionais para problemas reais.
+        Olá! Sou <span class="servico-texto-realce">Lucas Santos</span>, estudante de Análise e Desenvolvimento de Sistemas, com foco em desenvolvimento web, Python, SQL e análise de dados. 
+        Estou construindo projetos práticos para aplicar lógica de programação, automação e criação de interfaces funcionais.
       </p>
     </article>
 
@@ -58,8 +58,13 @@
   </section>
 
   <footer>
-    © 2025 Lucas Santos. Todos os direitos reservados.
+    <p>© <span id="ano"></span> Lucas Santos. Todos os direitos reservados.</p>
   </footer>
+
+  <script>
+    document.getElementById("ano").textContent = new Date().getFullYear();
+  </script>
+  
 </body>
 
 </html>
